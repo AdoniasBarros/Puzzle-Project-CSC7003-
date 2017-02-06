@@ -1,5 +1,7 @@
 // Functions declared in "puzzle.h" header file
 int points = 0;
+time_t start, end;
+double dif;
 
 void clearterminal(void){
 	system("clear");
@@ -8,12 +10,27 @@ void clearterminal(void){
 void initialmessage(void){
 	printf("*****************************************\n\n");
 	printf("Welcome to the Word Dynamic Search Puzzle\n\n\n");
-	printf("*****************************************\n\n");
+	printf("*****************************************");
 	printf("\n\n");
 }
 
 void menu(void){
-
+	printf("Rules:\n");
+	printf("1. Difficulty -> 'e'asy:5m 'm' medium:3m 'h'hard:2m\n");
+	printf("2. Movement -> (a,b,c,d)\n");
+	printf("	a: to move a row 'r' / to move a column 'c'.\n");
+	printf("	b: case 'r': to move left 'l' / to move right 'r' \n");
+	printf("	b: case 'c': to move up   'u' /  to move down  'd'\n");
+	printf("	c: row or column number \n");
+	printf("	d: number of movements \n");
+	printf("3. Time -> After the time the user has more one movement to end the game\n");
+	printf("4. Other options\n");
+	printf("	't' update the time\n");
+	printf("	'f' finishes the game immediately\n");
+	printf("5. Pontuation -> The pontuation is according to scrabble");
+	printf("6. The game starts after chose the difficulty\n");
+	printf("\n\n");
+	
 }
 
 char getRandomChar(void){
@@ -37,6 +54,7 @@ void fillGrid(char **puzzleGrid){
 
 void printGrid(char **puzzleGrid){
 	int i,j;
+	printf("\n\n");
 	printf("   0 1 2 3 4 5\n\n");
 	for(i=0;i<6;i++){
 		printf("%d  ", i);
@@ -45,7 +63,6 @@ void printGrid(char **puzzleGrid){
 		}
 		printf("\n");
 	}
-	printf("\n");
 	printf("\n");
 }
 
@@ -104,11 +121,11 @@ void rotatePositionCol(char direction,int rowcolnumb,int numbdesloc, char **puzz
 
 }
 
-void movement(char rowcol, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid){
-	if(rowcol=='r'){
+void movement(char option, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid){
+	if(option=='r'){
 		rotatePositionRow(direction,rowcolnumb,numbdesloc,puzzleGrid);
 	}
-	else if(rowcol=='c'){
+	else if(option=='c'){
 		rotatePositionCol(direction,rowcolnumb,numbdesloc,puzzleGrid);
 	}
 }
@@ -161,7 +178,9 @@ void checkrows(FILE* fp, char **puzzleGrid){
 
 void checkcols(FILE *fp, char **puzzleGrid){
 	char word[5], str[5];
+	char* aux;
 	int i,j;
+	
 	j=0;
 	while(j<6){
 		for(i=0;i<6;i++){
@@ -180,7 +199,7 @@ void checkcols(FILE *fp, char **puzzleGrid){
 }
 
 
-void checkword(char rowcol, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid){
+void checkword(char option, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid){
 
 	char word[5], str[5];
 	int i,j;
@@ -191,14 +210,40 @@ void checkword(char rowcol, char direction,int rowcolnumb,int numbdesloc, char *
 		perror("\nError: \n");
 		exit(0);
 	}
-	if(rowcol=='r') checkrows(fp,puzzleGrid);
-	if(rowcol=='c') checkcols(fp,puzzleGrid);
+	if(option=='r') checkrows(fp,puzzleGrid);
+	if(option=='c') checkcols(fp,puzzleGrid);
 
 	fclose(fp);
 }
 
 
+void checktime(char level){
 
+	if(level=='e'){
+		if(dif>=300){
+			printf("GAME FINISHED!\n");
+			exit(0);
+		}
+	}
+	else if(level=='m'){
+		if(dif>=180){
+			printf("GAME FINISHED!\n");
+			exit(0);
+		}
+	}
+	else if(level=='h'){
+		if(dif>=120){
+			printf("GAME FINISHED!\n");
+			exit(0);
+		}
+	}
+}
+
+void showtime(void){
+	time (&end);
+	dif = difftime (end,start); 
+	printf ("Elasped time: %.2lf s\n", dif ); 
+}
 //http://www.geeksforgeeks.org/array-rotation/
 
 

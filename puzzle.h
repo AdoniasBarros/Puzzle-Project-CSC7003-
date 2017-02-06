@@ -15,10 +15,10 @@ void rotatePositionRow(char direction,int rowcolnumb,int numbdesloc, char **puzz
 void rowRotatePos1t(char direction,int rowcolnumb, char **puzzleGrid); // rotate row by 1 time
 void rotatePositionCol(char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // rotate col by N times
 void colRotatePos1t(char direction,int rowcolnumb, char **puzzleGrid); // rotate col by 1 time
-void movement(char rowcol, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // call functions for movement is row or column 
-//char* findword(char** puzzleGrid); // find a word in the grid
-void checkpoints(char* word);
-void checkcols(FILE *fp, char **puzzleGrid);
-void checkrows(FILE *fp, char **puzzleGrid);
-void checkword(char rowcol, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // check if a world was found in the board
+void movement(char option, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // call functions for movement is row or column 
+void checkpoints(char* word); //see the points achieved by the user
+void checkcols(FILE *fp, char **puzzleGrid); //check if there is a word in the columns
+void checkrows(FILE *fp, char **puzzleGrid); //check if there is a word in the rows
+void checkword(char option, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // check if a world was found in the board
+void checktime(char level); //check if the time is over
 
