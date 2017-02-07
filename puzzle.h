@@ -6,7 +6,7 @@
 #include <time.h>
 
 void initialmessage(void); // show initial message
-void clearterminal(void); // clear every information in the terminal
+void clearterminal(void); // clear the information in the terminal
 void menu(void); // print the option menu
 char getRandomChar(void); // get a randomically char
 void fillGrid(char **puzzleGrid); // fill the grid with letters between 'A' and 'Z'
@@ -21,4 +21,5 @@ void checkcols(FILE *fp, char **puzzleGrid); //check if there is a word in the c
 void checkrows(FILE *fp, char **puzzleGrid); //check if there is a word in the rows
 void checkword(char option, char direction,int rowcolnumb,int numbdesloc, char **puzzleGrid); // check if a world was found in the board
 void checktime(char level); //check if the time is over
+void showtime(void); //show the elapsed time
 

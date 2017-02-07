@@ -47,8 +47,9 @@ int main(void){
 		switch(option){
 			// change row
 			case 'r':
+				scanf("%d",&rowcolnumb);
 				scanf(" %c",&direction);
-				scanf("%d %d",&rowcolnumb,&numbdesloc);
+				scanf("%d",&numbdesloc);
 				//seeing the entry performs the movement
 				movement(option,direction,rowcolnumb,numbdesloc,puzzleGrid);
 				//check if any world was found
@@ -56,14 +57,15 @@ int main(void){
 				break;
 			//change column
 			case 'c':
+				scanf("%d",&rowcolnumb);
 				scanf(" %c",&direction);
-				scanf("%d %d",&rowcolnumb,&numbdesloc);
+				scanf("%d",&numbdesloc);
 				//seeing the entry performs the movement
 				movement(option,direction,rowcolnumb,numbdesloc,puzzleGrid);
 				//check if any world was found
 				checkword(option,direction,rowcolnumb,numbdesloc,puzzleGrid);
 				break;
-			//check time
+			//show game time
 			case 't':
 				showtime();
 				printf("Total points: %d\n",points);
@@ -92,34 +94,47 @@ int main(void){
 
 
 
-/* Some Requirements 
-* 1 player ou 2 players
-* The board has a size 5x5
-* Board = List of lists
-* Random letters
-* Difficulty determined by time/ easy: 5 minutes, medium: 3 minutes, hard: 2 minutes
-* Ponctuation: scrabble english
+/* REQUIREMENTS 
+*	The game was all developed in C language;
+*	The game can be played by 1 player;
+*	The grid (board) has the size of 5 letters per 5 letters (5x5);
+*	The board generates random letters without considering the possible words;
+*	The words used in the game are provided by the developer in a separated dictionary, a “dic.txt” file. It is possible for the user to change the dictionary, it is just *	necessary to put a file with the same name in the same folder as the executable game.;
+*	The difficulty is defined by time, when chosen the difficulty the user has the following time to make the maximum points:
+*	Easy Level: 5 minutes;
+*	Medium Level: 3 minutes;
+*	Hard Level: 2 minutes;
+*	The punctuation follows the English Version of the Scrabble game which are:
 *
+*Letters
+*	Points
+*	E, A, I, O, N, R, T, L, S, U
+*	1 point
+*	D, G
+*	2 points
+*	B, C, M, P
+*	3 points
+*	F, H, V, W, Y
+*	4 points
+*	K
+*	5 points
+*	J, X
+*	8 points
+*	Q, Z
+*	10 points
 *
-*Next taks
-*discover why rotaterow is changing other lines
-*finish the column movement logic
-*create dictionnary
+*The first screen is a Menu containing all the information necessary to the user, as instructions to play, to choose the level, to show the time, the punctuation and how to *exit;
+*The user need to form words with the grid with the objective to obtain the maximum punctuation in the defined time;
 *
-*After It
-*create function to anylize if the user made one good world
-*point system for each good world achieved
-*time for all the levels
-*texts to help the user in the game
 *
 * 
-*tests
-*difficulty entry in the first different from e, m or h
+* TESTS
+*difficulty entry in the first different from 'e', 'm' or 'h' the game will expect a right enter
 *if option is not 'r' 'c' 't' or 'f' the entry is invalid
 *
 *
 *
-*
+* FIXED PROBLEMS
 *04/02/2016
 *PROBLEM FIXED: Repeated positions in the random matrix, when changing rows or columns others were changed 
 *The problem in the positions of the random matrix creation and in the rotatePositionRow was fixed
@@ -145,6 +160,19 @@ int main(void){
 *06/02/2016
 *PROBLEM FIXED: Dictionary problem
 *Problem to scan words in the dictionary
+*
+*
 *time to fix the bug: 5 hours
+*
+*
+*
+*bug: tipe difficult with more than one letter
+*bug: negative rows and columns or values out of the 0 to 5 size
+*improvement: pass the dictionary to an array
+*change the name of the variables
+*definir constantes para os numeros #define 
+*
+*
+*
 *
 */
