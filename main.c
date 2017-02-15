@@ -47,7 +47,10 @@ int main(void){
 		switch(option){
 			// change row
 			case 'r':
-				scanf("%d",&rowcolnumb);
+				do{
+                                        printf("Type a valid row number (0-5): ");
+                                        scanf("%d",&rowcolnumb);
+                                }while((rowcolnumb<0)||(rowcolnumb>5));
 				scanf(" %c",&direction);
 				scanf("%d",&numbdesloc);
 				//seeing the entry performs the movement
@@ -57,7 +60,10 @@ int main(void){
 				break;
 			//change column
 			case 'c':
-				scanf("%d",&rowcolnumb);
+				do{
+                                        printf("Type a valid row number (0-5): ");
+                                        scanf("%d",&rowcolnumb);
+                                }while((rowcolnumb<0)||(rowcolnumb>5));
 				scanf(" %c",&direction);
 				scanf("%d",&numbdesloc);
 				//seeing the entry performs the movement
