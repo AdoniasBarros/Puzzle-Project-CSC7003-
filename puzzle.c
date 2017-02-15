@@ -26,11 +26,11 @@ void menu(void){
 	printf("	c: case 'r': to move left 'l' / to move right 'r' \n");
 	printf("	c: case 'c': to move up   'u' /  to move down  'd'\n");
 	printf("	d: number of movements \n");
-	printf("3. Time -> After the time the user has more one movement to end the game\n");
+	printf("3. Time -> After the time ends up, the user has one more movement to end his game\n");
 	printf("4. Other options\n");
-	printf("	't' update the time\n");
-	printf("	'f' finishes the game immediately\n");
-	printf("5. Pontuation -> The pontuation is according to scrabble\n");
+	printf("	't' show the current time\n");
+	printf("	'f' finish the game immediately\n");
+	printf("5. Score Grid -> The score is based on the Scrabble Game\n");
 	printf("	1 point:  E, A, I, O, N, R, T, L, S, U\n");
 	printf("	2 points: D, G\n");
 	printf("	3 points: B, C, M, P\n");		
@@ -38,7 +38,7 @@ void menu(void){
 	printf("	5 points: K\n");
 	printf("	8 points: J, X\n");
 	printf("	0 points: Q, Z\n");	
-	printf("6. The game starts after chose the difficulty\n");
+	printf("6. The game begins after the choice of difficulty\n");
 	printf("\n\n");
 	
 }
