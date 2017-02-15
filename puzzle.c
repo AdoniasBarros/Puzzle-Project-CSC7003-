@@ -179,7 +179,6 @@ void checkpoints(char* word){
 //check if there is a word in the rows
 void checkrows(FILE* fp, char **puzzleGrid){
 	char word[5], str[5];
-	char buffer[20];
 	int i,j;
 	j=0;
 	while(j<6){
@@ -191,8 +190,8 @@ void checkrows(FILE* fp, char **puzzleGrid){
 			if (strstr(word,str) != NULL){ //see if there is the substring of the file inside the string of the row | column
 				printf("\nWord %s found! Congratulations!\n",str);
 				checkpoints(str); // once the word is found check the points the user made
-				fseek(fp, 0, SEEK_CUR);
-				fprintf(fp,"*\n");
+				fseek(fp, sizeof(str), SEEK_CUR);
+                                fprintf(fp,"*");
 			}
 		}
 		fseek(fp, 0, SEEK_SET); // set the pointer back to the beginning of the file 
@@ -203,7 +202,6 @@ void checkrows(FILE* fp, char **puzzleGrid){
 //check if there is a word in the columns
 void checkcols(FILE *fp, char **puzzleGrid){
 	char word[5], str[5];
-	char buffer[20];
 	char* aux;
 	int i,j;
 	
@@ -216,10 +214,10 @@ void checkcols(FILE *fp, char **puzzleGrid){
 		while (fscanf(fp,"%s",str) != EOF){ //read every string in the file until the end
 			if (strstr(word,str) != NULL){ //see if there is the substring of the file inside the string of the row | column
 				printf("\nWord %s found! Congratulations!\n",str);
-				checkpoints(str); // once the word is found check the points the user made
-				fseek(fp, 0, SEEK_CUR);
-				fprintf(fp,"*\n");
-			}
+				checkpoints(str); // once the word is found check the points the user made				
+				fseek(fp, 0, SEEK_CUR);				
+				fprintf(fp,"*");			
+}
 		}
 		fseek(fp, 0, SEEK_SET); // set the pointer back to the beginning of the file 
 		j++;
